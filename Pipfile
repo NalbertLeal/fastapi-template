@@ -8,6 +8,7 @@ sqlalchemy = "*"
 asyncpg = "*"
 fastapi = "*"
 uvicorn = "*"
+pydantic = "*"
 
 [dev-packages]
 
