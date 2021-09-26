@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Integer, DateTime
 from sqlalchemy.sql import func
 from sqlalchemy.future import select
 
-from ..config import Base, async_database_session
+from src.config import Base, async_database_session
 from .base_model import BaseModel
 
 class User(Base, BaseModel):
@@ -18,10 +18,13 @@ class User(Base, BaseModel):
 
   @classmethod
   async def find_by_email(cls, email: str):
-    query = select(cls).where(cls.email == email)
-    results = await async_database_session.execute(query)
-    (result,) = results.one()
-    return result
+    try:
+      query = select(cls).where(cls.email == email)
+      results = await async_database_session.execute(query)
+      (result,) = results.one()
+      return result
+    except:
+      return None
 
 
   def __repr__(self) -> str:
