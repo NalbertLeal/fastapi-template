@@ -25,21 +25,19 @@ async def user_find_by_email(email: str):
   return { 'error': 'User not found' }
 
 @user_router.post("/")
-async def user_create(userBody: UserCreate):
-  user = await User.find_by_email(email=userBody.email)
+async def user_create(user_body: UserCreate):
+  user = await User.find_by_email(email=user_body.email)
   if user:
     return { 'error': 'User already exists' }
-  return await User.create(
-    fullname=userBody.fullname,
-    email=userBody.email,
-    password=userBody.password
-  )
+  new_user = user_body.dict()
+  new_user = { k: v for (k, v) in new_user.items() if v is not None }
+  return await User.create(**new_user)
 
 @user_router.put("/")
-async def user_update(userBody: UserUpdate):
-  user_dict = userBody.dict(exclude={'id'})
-  user_dict = {k: v for (k, v) in user_dict.items() if v is not None}
-  user = await User.update(userBody.id, **user_dict)
+async def user_update(user_body: UserUpdate):
+  user_dict = user_body.dict(exclude={'id'})
+  user_dict = { k: v for (k, v) in user_dict.items() if v is not None }
+  user = await User.update(user_body.id, **user_dict)
   if not user:
     return user
   return { 'error': 'User not updated' }

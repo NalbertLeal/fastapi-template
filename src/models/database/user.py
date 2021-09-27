@@ -28,4 +28,4 @@ class User(Base, BaseModel):
 
 
   def __repr__(self) -> str:
-      return f'{self.id} {self.fullname} {self.password} {self.updated_at}, {self.created_at}'
+    return f'{self.id} {self.fullname} {self.password} {self.updated_at}, {self.created_at}'
