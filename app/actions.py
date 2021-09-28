@@ -1,8 +1,7 @@
 from fastapi import APIRouter
 
-from src.models.requests_body.user_create import UserCreate
-from src.models.requests_body.user_update import UserUpdate
-from src.models.database import User
+from app.schemas import UserCreate, UserUpdate
+from app.models import User
 
 user_router = APIRouter(
   prefix="/user",

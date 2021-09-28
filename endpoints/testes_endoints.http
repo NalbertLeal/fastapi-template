@@ -1,4 +1,4 @@
-GET http://127.0.0.1:8000/user/by_email?email=n@h.com HTTP/1.1
+GET http://127.0.0.1:8000/user/by_email?email=leal@outlook.com HTTP/1.1
 
 ###
 
@@ -10,8 +10,8 @@ POST http://127.0.0.1:8000/user HTTP/1.1
 content-type: application/json
 
 {
-  "fullname": "Melo",
-  "email": "nalbert@outlook.com",
+  "fullname": "Leal",
+  "email": "leal@outlook.com",
   "password": "123456"
 }
 
@@ -21,7 +21,7 @@ PUT http://127.0.0.1:8000/user HTTP/1.1
 content-type: application/json
 
 {
-  "id": 1,
-  "email": "n@h.com",
-  "fullname": "gabriel"
+  "id": 5,
+  "email": "leal@outlook.com",
+  "fullname": "Leal Nalbert"
 }
