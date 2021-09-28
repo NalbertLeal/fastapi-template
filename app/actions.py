@@ -38,5 +38,5 @@ async def user_update(user_body: UserUpdate):
   user_dict = { k: v for (k, v) in user_dict.items() if v is not None }
   user = await User.update(user_body.id, **user_dict)
   if not user:
-    return user
-  return { 'error': 'User not updated' }
+    return { 'error': 'User not updated' }
+  return user

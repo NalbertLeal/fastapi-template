@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, DateTime
+from sqlalchemy import Column, String, Integer, DateTime, update as sqlalchemy_update
 from sqlalchemy.sql import func
 from sqlalchemy.future import select
 
